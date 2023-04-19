@@ -50,6 +50,21 @@
       <h3>No Tickets Yet</h3>
     <% } %>
   </section>
+  <div>Meal:</div>
+    <ul>
+      <% flight.meals.forEach(meal => { %>
+        <li><%= meal.name %></li>
+      <% }) %>
+    </ul>
+  </section>
+  <form id="add-meal-to-flight" action="/flights/<%= flight._id %>/meals" method="POST">
+    <select name="mealId">
+      <% meals.forEach(meal => { %>
+        <option value="<%= meal._id %>"><%= meal.name %></option>
+      <% }) %>
+    </select>
+    <button type="submit">Add to Flight</button>
+  </form>
 </main>
   
 <%- include('../partials/footer') %>
